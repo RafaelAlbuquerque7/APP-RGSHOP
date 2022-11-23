@@ -1,0 +1,15 @@
+{
+  "name": "rgshop",
+  "version": "1.0.0",
+  "description": "pwa da loja RG",
+  "main": "index.html",
+  "scripts": {
+    "serve": "serve .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rafael e Guilherme",
+  "license": "ISC",
+  "dependencies": {
+    "serve": "^14.1.2"
+  }
+}
