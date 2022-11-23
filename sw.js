@@ -1,5 +1,5 @@
-let cacheName = "my-first-pwa";
-let filesToCache = ["/", "/index.html", 
+let cacheName = "APP-RGSHOP";
+let filesToCache = ["/", "/index.html",
                 "/css/style.css", "/js/main.js"];
 
 /* inicializando a service worker e fazendo o 

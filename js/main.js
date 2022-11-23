@@ -12,19 +12,22 @@ window.addEventListener('load', e => {
 async function postComp() {
     const res = await fetch(url);
     const data = await res.json();
-    main.innerHTML = data.articles.map(createArticle).join('\n');
+    console.log(data);
+    document.getElementById("cards").innerHTML = data.map(createArticle).join('\n');
 }
 
 function createArticle(article){
     return `
            <div class="article">
-                <a href="${article.url}" target="_blank">
-                    <img src="${article.urlToImage}" class="image" alt="${article.content}"/>
-                    <h2>${article.title}</h2>
-                    <p>${article.description}</p>
-                </a>
+              
+            <img src="${article.imagem}" class="image"/>
+        
+                    <h2>${article.titulo}</h2>
+                    
+                    <p>${article.descricao}</p>
+                    <p>R$ ${article.preco}</p>
+                
+
            </div>
     `
 }
-
-
