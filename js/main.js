@@ -38,7 +38,7 @@ const map = document.getElementById('mapa');
  
 const sucesso = (posicao) => {//callback de sucesso para captura da posicao
     posicaoInicial = posicao;
-    map.src = "http://maps.google.com/maps?q="+ posicaoInicial.coords.latitude+"," + posicaoInicial.coords.longitude +"&z=16&output=embed"
+    map.innerHTML = '<div class="mapouter border rounded mt-2"><div class="gmap_canvas"><iframe style="width: 100%;height: 100%;" id="gmap_canvas" src="https://maps.google.com/maps?q=' + posicaoInicial.coords.latitude + posicaoInicial.coords.longitude + '&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><style>.gmap_canvas {overflow:hidden;background:none!important;height:100%;width:100%;}</style></div></div>'
 };
  
 const erro = (error) => {//callback de error (falha para captura de localizacao)
