@@ -2,6 +2,7 @@ let url = `https://elated-yak-turtleneck.cyclic.app/produtos`;
 const main = document.querySelector('main');
 
 window.addEventListener('load', e => {
+    loc();
     postComp();
     "use strict";//restrito a funcionar em navegadores comES6 >
     if("serviceWorker" in navigator){
@@ -34,7 +35,6 @@ function createArticle(article){
 
 let posicaoInicial;//variavel para capturar a posicao
 const map = document.getElementById('mapa');
-const capturarLocalizacao = document.getElementById("localizacao");
  
 const sucesso = (posicao) => {//callback de sucesso para captura da posicao
     posicaoInicial = posicao;
@@ -60,6 +60,6 @@ const erro = (error) => {//callback de error (falha para captura de localizacao)
     console.log('Ocorreu um erro: ' + errorMessage);
 };
  
-capturarLocalizacao.addEventListener("click", () => {
+function loc () {
     navigator.geolocation.getCurrentPosition(sucesso, erro);
-  });
+};
