@@ -27,7 +27,7 @@ function createArticle(article){
                     <h2>${article.titulo}</h2>
                     
                     <p>${article.descricao}</p>
-                    <p>R$ ${article.preco}</p>
+                    <p>Preço: R$ ${article.preco},00</p>
                 
 
            </div>
