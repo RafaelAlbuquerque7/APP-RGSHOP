@@ -1,42 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>You are offline</title>
-
-    <style>
-      body {
-        font-family: helvetica, arial, sans-serif;
-        margin: 2em;
-      }
-
-      h1 {
-        font-style: italic;
-        color: #373fff;
-      }
-
-      p {
-        margin-block: 1rem;
-      }
-
-      button {
-        display: block;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>You are offline</h1>
-
-    <p>Click the button below to try reloading.</p>
-    <button type="button">⤾ Reload</button>
-
-    <script>
-      document.querySelector("button").addEventListener("click", () => {
-        window.location.reload();
-      });
-    </script>
-  </body>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8" />
+        <title>RG SHOP</title>
+        <link rel="apple-touch-icon" href="images/pwa-icon-256.png" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="manifest" href="/manifest.json" />
+        <!--viewport para designers responsivos (mobo), content é a configuração-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="white" />
+    </head>
+    <body class="fullscreen">
+      <h1>O site está Offline</h1>
+        
+        <script src="js/main.js"></script>
+    </body>
 </html>
