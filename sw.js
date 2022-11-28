@@ -1,6 +1,5 @@
 let cacheName = "APP-RGSHOP";
-let cacheArmazena = "APP-RGSHOP-V1"
-let filesToCache = ["/", "/index.html", "/fallback/offline.html",
+let filesToCache = ["/", "favicon.ico","/index.html", "/fallback/offline.html",
                 "/css/style.css", "/js/main.js"];
                 
 
@@ -14,21 +13,27 @@ self.addEventListener("install", (e) => {
      );
 });
 
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(keys.filter(key => key !== cacheName).map(key => caches.delete(key)))
+    })
+  )
+})
 
-/* disponibilizando o conteudo quando estiver offline */
+
+// /* disponibilizando o conteudo quando estiver offline */
 // self.addEventListener("fetch", (e) => {
 //   e.respondWith(
 //     caches.match(e.request).then((response) => {
 //       return response || fetch(e.request).then(fetchRes => {
 //         return caches.open(cacheArmazena).then(cache =>{
-//           cache.put(e.request.url, fetchRes.clone())
-//           return fetchRes
+//           console.log(cacheArmazena)
+//          cache.put(e.request.url, fetchRes.clone())
+//          return fetchRes;
 //         })
 //       })
-//     }).catch(() => { 
-//       if(e.request.url.indexOf('.html') > -1){
-//         return caches.match("/fallback/offline.html");
-//       }})
+//     }).catch(() => {return caches.match("/fallback/offline.html");})     
 //   );
 // });
 
@@ -40,3 +45,25 @@ self.addEventListener("fetch", (e) => {
   );
 });
 
+
+// self.addEventListener("fetch", (e) => {
+//     e.respondWith(
+//       (async () => {
+//         try {
+//           const resposta = await e.resposta;
+//           console.log(resposta);
+//           if (resposta) {
+//             return resposta;
+//           }
+//           const networkResponse = await fetch(e.request);
+//           return networkResponse;
+//         } catch (error) {
+//           console.log("Fetch failed; returning offline page instead.", error);
+//           const cache = await caches.open(cacheName);
+//           const cachedResponse = await cache.match('/fallback/offline.html');
+//           return cachedResponse;
+//         }
+//       })
+//     );
+  
+// });
