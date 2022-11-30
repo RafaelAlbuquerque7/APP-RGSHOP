@@ -1,6 +1,6 @@
 let cacheName = "APP-RGSHOP";
 let filesToCache = ["/", "favicon.ico","/index.html", "/fallback/offline.html",
-                "/css/style.css", "/js/main.js"];
+                "/css/style.css", "/js/main.js", "/pages/index.html"];
                 
 
 /* inicializando a service worker e fazendo o 
