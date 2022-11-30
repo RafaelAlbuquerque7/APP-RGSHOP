@@ -1,54 +1,44 @@
-let cacheName = "APP-RGSHOP";
-let filesToCache = ["/", "favicon.ico","/index.html", "/fallback/offline.html",
-                "/css/style.css", "/js/main.js", "/pages/index.html"];
-                
+const OFFLINE_VERSION = 1;
+const CACHE_NAME = "APP-RGSHOP";
+// Customize this with a different URL if needed.
+const OFFLINE_URL = "/fallback";
 
-/* inicializando a service worker e fazendo o 
-download do conteúdo da aplicação */
+self.addEventListener("install", (event) => {
+    event.waitUntil(
+        (async () => {
+            const cache = await caches.open(CACHE_NAME);
+            await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
+            await cache.add(new Request("/css", { cache: "reload" }));
 
-self.addEventListener("install", (e) => {
-  e.waitUntil(
-      caches.open(cacheName).then(function (cache) {
-        return cache.addAll(filesToCache);
-      })
-     );
+        })()
+    );
 });
 
-
-self.addEventListener('activate', (e) => {
-  e.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(keys.filter(key => key !== cacheName).map(key => caches.delete(key)))
-    })
-  )
-})
-
-self.addEventListener("fetch", (e) => {
-  e.respondWith(
-    caches.match(e.request).then((response) => {
-        return response || fetch(e.request);
-    }).catch(() => {
-      console.log("Fetch failed; returning offline page instead.");
-      const cachedResponse = caches.open(cacheName).match('/fallback/offline.html');
-    //  const cachedResponse = caches.match('/fallback/offline.html');
-      return cachedResponse;
-  })
-  );
+self.addEventListener("activate", (event) => {
+    // Tell the active service worker to take control of the page immediately.
+    self.clients.claim();
 });
 
+self.addEventListener("fetch", (event) => {
+    // We only want to call event.respondWith() if this is a navigation request
+    // for an HTML page.
+    if (event.request.mode === "navigate") {
+        if (event.request.url.match(/SignOut/)) {
+            return false;
+        }
+        event.respondWith(
+            (async () => {
+                try {
+                    const networkResponse = await fetch(event.request);
+                    return networkResponse;
+                } catch (error) {
+                    console.log("Fetch failed; returning offline page instead.", error);
 
-// self.addEventListener("fetch", (e) => {
-//     e.respondWith(()=>{
-//         try {
-//         caches.match(e.request).then((response) => {
-//            return response || fetch(e.request);
-//         })
-//         } catch (error) {
-//           console.log("Fetch failed; returning offline page instead.", error);
-//           const cache = caches.open(cacheName);
-//           const cachedResponse = cache.match('/fallback/offline.html');
-//           return cachedResponse;
-//         }     
-//       });
-// });
-
+                    const cache = await caches.open(CACHE_NAME);
+                    const cachedResponse = await cache.match(OFFLINE_URL);
+                    return cachedResponse;
+                }
+            })()
+        );
+    }
+});

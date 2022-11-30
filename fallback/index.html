@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <title>RG SHOP</title>
-        <link rel="apple-touch-icon" href="images/pwa-icon-256.png" />
+        <link rel="apple-touch-icon" href="../images/pwa-icon-256.png" />
         <link rel="stylesheet" href="../css/style.css" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="../manifest.json" />
         <!--viewport para designers responsivos (mobo), content é a configuração-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="white" />
@@ -22,13 +22,12 @@
 
 <div class="conteudo"> 
 
-<h1>Sobre o nosso trabalho:</h1>
+<h1>O site está Offline</h1>
 
 
 
-<p class="text">Somos uma loja online do ramo de vendas de periféricos gamers, visando o melhor
-custo benefício para os nossos clientes, nossa loja foi fundada em 2020 
-pelos sócios <b>Rafael Albuquerque</b> e <b>Guilherme Tombini.</b></h3>
+<p class="text">Você está acessando o site offline, portanto veja sua internet ou aperte o botão</h3>
+<a href="/"><b>Repaginar</b></a>
 
 
 </div>
@@ -37,6 +36,13 @@ pelos sócios <b>Rafael Albuquerque</b> e <b>Guilherme Tombini.</b></h3>
     <h1>  RGSHOP.COM  </h1>
       </footer>
         
-        <script src="js/main.js"></script>
     </body>
+    <script>
+        window.addEventListener('load', e => {
+    "use strict";//restrito a funcionar em navegadores comES6 >
+    if("serviceWorker" in navigator){
+        navigator.serviceWorker.register("../sw.js");
+    }
+}); 
+    </script>
 </html>
