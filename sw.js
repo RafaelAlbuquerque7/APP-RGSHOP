@@ -8,8 +8,6 @@ self.addEventListener("install", (event) => {
         (async () => {
             const cache = await caches.open(CACHE_NAME);
             await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
-            await cache.add(new Request("/css", { cache: "reload" }));
-
         })()
     );
 });
