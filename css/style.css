@@ -18,7 +18,16 @@ html, .fullscreen {
     width: 100%;
 }
 
-
+.bem_vindo{
+    background-color: #202520;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 10px 5px 5px black;
+    width:60vw;
+    height:50vh;
+    margin-top:50px;
+    text-align: justify;
+}
 
 .title {
     font-size: 3rem;
@@ -148,7 +157,7 @@ margin-top: 40px;
     box-shadow: 10px 5px 5px black;
     width:60vw;
     height:50vh;
-    margin-top:50px;
+    margin-top:30px;
     text-align: justify;
 }
 .gmap_canvas {overflow:hidden;background:none!important;width:60vw;height:250px;}
