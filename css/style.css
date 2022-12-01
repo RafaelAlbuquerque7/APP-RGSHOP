@@ -184,11 +184,10 @@ margin-top: 40px;
   align-items: center;
 }
 .text{
-   max-width: 60%;
+   max-width: 70%;
    text-align: justify;
-   font-size: 25px;
+   font-size: 20px;
    font-family: 'Poppins', sans-serif;
-
 }
 
 .footer{ 
