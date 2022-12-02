@@ -7,14 +7,12 @@ window.addEventListener('load', e => {
 
 
 let posicaoInicial;//variavel para capturar a posicao
+let capturarLocalizacao= document.getElementById('localizacao');
 const map = document.getElementById('mapa');
  
 const sucesso = (posicao) => {//callback de sucesso para captura da posicao
     posicaoInicial = posicao;
-    const latitude = posicaoInicial.coords.latitude 
-    const longitude = posicaoInicial.coords.longitude
-    console.log(latitude, longitude);
-    map.src = 'https://maps.google.com/maps?q=' + latitude + longitude + '&z=13&ie=UTF8&iwloc=&output=embed';
+    map.src = 'https://maps.google.com/maps?q=' + posicaoInicial.coords.latitude +','+ posicaoInicial.coords.longitude + '&z=13&ie=UTF8&iwloc=&output=embed';
     console.log(map.src);
 };
  
@@ -40,7 +38,6 @@ const erro = (error) => {//callback de error (falha para captura de localizacao)
 // function loc() {
 //     navigator.geolocation.getCurrentPosition(sucesso, erro);
 //   };
-let capturarLocalizacao= document.getElementById('localizacao')
 capturarLocalizacao.addEventListener('click', () => {
     navigator.geolocation.getCurrentPosition(sucesso, erro);
 });
