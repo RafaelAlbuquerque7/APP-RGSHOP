@@ -13,6 +13,7 @@ const map = document.getElementById('mapa');
 const sucesso = (posicao) => {//callback de sucesso para captura da posicao
     posicaoInicial = posicao;
     map.src = 'https://maps.google.com/maps?q=' + posicaoInicial.coords.latitude +','+ posicaoInicial.coords.longitude + '&z=13&ie=UTF8&iwloc=&output=embed';
+    console.log(posicaoInicial.coords.latitude, posicaoInicial.coords.longitude)
     console.log(map.src);
 };
  

@@ -24,7 +24,6 @@ html, .fullscreen {
     padding: 20px;
     box-shadow: 10px 5px 5px black;
     width:60vw;
-    height:50vh;
     margin-top:50px;
     text-align: justify;
 }
@@ -156,7 +155,6 @@ margin-top: 40px;
     padding: 20px;
     box-shadow: 10px 5px 5px black;
     width:60vw;
-    height:50vh;
     margin-top:30px;
     text-align: justify;
 }
